@@ -494,7 +494,7 @@ def FormAddBooks():
                         cursor.execute(query, (entry_number, book_name, author, publisher, isbn, latest_version, shelf, binary_data))
                         mysql.connection.commit()
                         addBooks_success = True
-                        message = 'Success: Book added successfully!'
+                        # message = 'Success: Book added successfully!'
                         # Redirect to the list of books if successful
                         # return redirect(url_for('listOfBooks'))
 
