@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+
+    <!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900&amp;display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap css-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='bootstrap/bootstrap.css') }}">
+    <!-- App css-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}">
+    <link id="color" rel="stylesheet" href="{{ url_for('static',filename='css/color-1.css') }}" media="screen">
+
+    <!-- Responsive css-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/responsive.css') }}">
+  <style>
+    /* Overriding Bootstrap's tooltip positioning */
+.custom-input .invalid-tooltip {
+  position: static;
+}
+
+  </style>
+  </head>
+  <body>
+    <!-- login page start-->
+    <div class="container-fluid p-0">
+      <div class="row m-0">
+        <div class="col-12 p-0">    
+          <div class="login-card login-dark">
+              
+            <div class="login-main">
+
+              <form class="row g-3 needs-validation custom-input theme-form" novalidate="" method="POST" action="/login">
+                  <h4>Sign in to account</h4>
+                  <p>Enter your email & password to login</p>
+
+                  <div class="form-group">
+                    <label for="validationEmail" class="col-form-label">Email Address</label>
+                    <input id="validationEmail" class="form-control" name="email" type="email" placeholder="Test@gmail.com"  required="">
+                    <div class="invalid-tooltip">Please enter your username!</div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="validationPassword" class="col-form-label">Password</label>
+                    <div class="form-input position-relative">
+                      <input id="validationPassword" class="form-control" type="password" name="password" placeholder="*********" required="">
+                      <div class="show-hide">
+                        <span id="togglePassword" class="show"></span>
+                      </div>
+                      <div class="invalid-tooltip">Please provide a password.</div>
+                    </div>
+                  </div>
+                  
+
+                  <!-- Display login error message -->
+                    {% if message %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ message }}
+                    </div>
+                    {% endif %}
+
+                  <div class="form-group mb-0">
+                    <div class="checkbox p-0">
+                    </div>
+
+                    <div class="text-end mt-3">
+                      <button class="btn btn-primary btn-block w-100" type="submit">Sign in</button>
+                    </div>
+                    
+                  </div>
+                  <p class="mt-4 mb-0 text-center">Don't have account?<a class="ms-2" href="sign-up">Create Account</a></p>
+                
+                </form>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% if login_success %}
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script>
+          Swal.fire({
+              title: 'Success!',
+              text: 'Login successfully',
+              icon: 'success'
+          }).then(function() {
+              // Redirect to the next page after acknowledging the alert
+              window.location.href = "{{ url_for(session.next_page) }}";
+          });
+      </script>
+      {% endif %}
+
+      <script>
+        document.getElementById('togglePassword').addEventListener('click', function (e) {
+    // Toggle the type attribute
+    const passwordInput = document.getElementById('validationPassword');
+    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordInput.setAttribute('type', type);
+
+    // Toggle the eye / eye-slash icon
+    this.classList.toggle('bi-eye'); // Add this line if you are using Bootstrap icons
+});
+
+      </script>
+
+
+      <!-- latest jquery-->
+      <script src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
+      
+      <!-- Bootstrap js-->
+      <script src="{{ url_for('static',filename='bootstrap/bootstrap.bundle.min.js') }}"></script>
+
+      <!-- Sidebar jquery-->
+      <script src="{{ url_for('static',filename='js/config.js') }}"></script>
+
+      <!-- Plugins JS start-->
+      <script src="{{ url_for('static', filename='js/form-validation-custom.js') }}"></script>
+      <!-- Plugins JS Ends-->
+
+      <!-- Theme js-->
+      <script src="{{ url_for('static',filename='js/script.js') }}"></script>
+      <!-- Plugin used-->
+    </div>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error 404</title>
+    <!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900&amp;display=swap" rel="stylesheet">
+  <!-- Google font-->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/fontawesome.css') }}">
+  <!-- ico-font-->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/vendors/icofont.css') }}">
+  <!-- Themify icon-->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/vendors/themify.css') }}">
+  <!-- Flag icon-->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/vendors/flag-icon.css') }}">
+  <!-- Feather icon-->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/vendors/feather-icon.css') }}">
+
+  <!-- Bootstrap css-->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/vendors/bootstrap.css') }}">
+  <!-- App css-->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}">
+
+  <link id="color" rel="stylesheet" href="{{ url_for('static',filename='css/color-1.css') }}" media="screen">
+
+  <!-- Responsive css-->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/responsive.css') }}">
+  </head>
+  <body>
+    <!-- tap on top starts-->
+    <div class="tap-top"><i data-feather="chevrons-up"></i></div>
+    <!-- tap on tap ends-->
+    <!-- page-wrapper Start-->
+    <div class="page-wrapper compact-wrapper" id="pageWrapper">
+      <!-- error-404 start-->
+      <div class="error-wrapper">
+        <div class="container"><img class="img-100" src="{{ url_for('static',filename='images/other-images/sad.png')}}" alt="">
+          <div class="error-heading">
+            <h2 class="headline font-danger">404</h2>
+          </div>
+          <div class="col-md-8 offset-md-2">
+            <p class="sub-content">
+              Unauthorized Access: You do not have permission to view this page. 
+              This may be due to insufficient privileges or incorrect user credentials.
+          </p>
+          
+          </div>
+          <div><a class="btn btn-danger-gradien btn-lg" href="login">BACK TO LOGIN PAGE</a></div>
+        </div>
+      </div>
+      <!-- error-404 end      -->
+    </div>
+
+    <!-- latest jquery-->
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <!-- Bootstrap js-->
+    <script src="{{ url_for('static', filename='js/bootstrap/bootstrap.bundle.min.js') }}"></script>
+    <!-- scrollbar js-->
+    <!-- Sidebar jquery-->
+    <script src="{{ url_for('static', filename='js/config.js') }}"></script>
+
+    <!-- Theme js-->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <!-- Plugin used-->
+  </body>
+</html>

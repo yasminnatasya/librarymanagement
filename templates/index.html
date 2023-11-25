@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>HomePage</title>
+
+    <!-- Themify icon-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/themify.css') }}">
+
+    <!-- Plugins css start-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/slick/slick.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/slick/slick-theme.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/scrollbar.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/animate.css') }}">
+
+    <!-- Plugins css Ends-->
+    <!-- Bootstrap css-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='bootstrap/bootstrap.css') }}">
+    <!-- App css-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}">
+
+    <link id="color" rel="stylesheet" href="{{ url_for('static',filename='css/color-1.css') }}" media="screen">
+
+    <!-- Responsive css-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/responsive.css') }}">
+
+  </head>
+
+  <body onload="startTime()"> 
+
+    <!-- page-wrapper Start-->
+    <div class="page-wrapper default-wrapper" id="pageWrapper">
+      <!-- Page Header Start-->
+      <div class="page-header">
+        <div class="header-wrapper row m-0">
+
+          <div class="header-logo-wrapper col-auto p-0">
+            <div class="logo-wrapper"><a href="index"><img class="img-fluid" src="{{ url_for('static',filename='images/logo.png') }}" alt=""></a></div>
+          </div>
+
+          <div class="left-header col-xxl-5 col-xl-6 col-lg-5 col-md-4 col-sm-3 p-0">
+            <div class="notification-slider">
+              <div class="d-flex h-100">
+                <h6 class="mb-0 f-w-400"><span class="font-primary">Don't Miss Out! </span>
+              </div>
+              <div class="d-flex h-100">
+                <h6 class="mb-0 f-w-400"><span class="f-light">Some Books are available ! </span></h6>
+              </div>
+            </div>
+          </div>
+
+          <div class="nav-right col-xxl-7 col-xl-6 col-md-7 col-8 pull-right right-header p-0 ms-auto">
+            <ul class="nav-menus">
+
+<!--Corner Right Profile -->
+              <li class="profile-nav onhover-dropdown pe-0 py-0">
+
+                <div class="media profile-media">
+                  <img class="b-r-10" src="{{ url_for('static', filename='images/profile.png') }}" alt="">
+                  <div class="media-body"><span>{{ first_name }}</span>
+                    <p class="mb-0 font-roboto">{{ user_type }} <i class="middle fa fa-angle-down"></i></p>
+                  </div>
+                </div>
+
+                <ul class="profile-dropdown onhover-show-div">
+                  <li><a href="#"><i data-feather="user"></i><span>Account </span></a></li>
+                  <li><a href="/logout"><i data-feather="log-in"> </i><span>Log Out</span></a></li>
+                </ul>
+
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+      <!-- Page Header Ends-->
+
+      <!-- Page Body Start-->
+      <div class="page-body-wrapper default-menu default-menu">
+
+        <!-- Page Sidebar Start-->
+        <div class="sidebar-wrapper" sidebar-layout="stroke-svg">
+          <div>
+            <!--LOGO-->
+            <div class="logo-wrapper"><a href="index"><img class="img-fluid for-light" src="{{ url_for('static',filename='images/logo.png') }}" alt=""><img class="img-fluid for-dark" src="../assets/images/logo/logo_dark.png" alt=""></a>
+              <div class="back-btn"><i class="fa fa-angle-left"></i></div>
+              <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="grid"> </i></div>
+            </div>
+
+
+            <nav class="sidebar-main">
+              <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
+              <div id="sidebar-menu">
+                <ul class="sidebar-links" id="simple-bar">
+                  <li class="back-btn">
+                    <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
+                  </li>
+
+                  <li class="sidebar-main-title">
+                    <div>
+                      <h6 class="lan-1">General</h6>
+                    </div>
+                  </li>
+                  <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
+                    <label class="badge badge-light-primary"></label><a class="sidebar-link sidebar-title" href="#"><span class="lan-3">Dashboard          </span></a>
+                  </li>
+                  <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
+                    <a class="sidebar-link sidebar-title" href="#">
+                        <span>Books           </span></a>
+                      <ul class="sidebar-submenu">
+                        <li><a href="listOfBooksUser">List Of Books</a></li>
+                        <li><a href="searchBooksUser">Search Books</a></li>
+                      </ul>
+                    </li>
+            </nav>
+          </div>
+        </div>
+        <!-- Page Sidebar Ends-->
+
+        <div class="page-body">
+          <div class="container-fluid">        
+            <div class="page-title">
+              <div class="row">
+                <div class="col-6">
+                  <h4>HomePage</h4>
+                </div>
+                <div class="col-6">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item">Dashboard</li>
+                    <li class="breadcrumb-item active">HomePage      </li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Container-fluid starts-->
+          <div class="container-fluid">
+            <div class="row widget-grid">
+              <div class="col-xxl-4 col-sm-6 box-col-6"> 
+                <div class="card profile-box">
+                  <div class="card-body">
+                    <div class="media media-wrapper justify-content-between">
+                      <div class="media-body"> 
+                        <div class="greeting-user">
+                          <h4 class="f-w-600">Welcome to Library</h4>
+                          <p>Enjoy the variety of books !</p>
+                          <div class="whatsnew-btn"><a class="btn btn-outline-white">Whats New !</a></div>
+                        </div>
+                      </div>
+                      <div>  
+                        <div class="clockbox">
+                          <svg id="clock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+                            <g id="face">
+                              <circle class="circle" cx="300" cy="300" r="253.9"></circle>
+                              <path class="hour-marks" d="M300.5 94V61M506 300.5h32M300.5 506v33M94 300.5H60M411.3 107.8l7.9-13.8M493 190.2l13-7.4M492.1 411.4l16.5 9.5M411 492.3l8.9 15.3M189 492.3l-9.2 15.9M107.7 411L93 419.5M107.5 189.3l-17.1-9.9M188.1 108.2l-9-15.6"></path>
+                              <circle class="mid-circle" cx="300" cy="300" r="16.2"></circle>
+                            </g>
+                            <g id="hour">
+                              <path class="hour-hand" d="M300.5 298V142"></path>
+                              <circle class="sizing-box" cx="300" cy="300" r="253.9"></circle>
+                            </g>
+                            <g id="minute">
+                              <path class="minute-hand" d="M300.5 298V67">   </path>
+                              <circle class="sizing-box" cx="300" cy="300" r="253.9"></circle>
+                            </g>
+                            <g id="second">
+                              <path class="second-hand" d="M300.5 350V55"></path>
+                              <circle class="sizing-box" cx="300" cy="300" r="253.9">   </circle>
+                            </g>
+                          </svg>
+                        </div>
+                        <div class="badge f-10 p-0" id="txt"></div>
+                      </div>
+                    </div>
+                    <div class="cartoon"><img class="img-fluid" src="{{ url_for('static', filename='images/cartoon.svg') }}" alt="vector women with leptop"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-xxl-8 col-sm-6 box-col-6"> 
+                <div class="row"> 
+                  <div class="col-xl-12"> 
+                    <div class="card widget-1">
+                      <div class="card-body"> 
+                        <div class="widget-content">
+                          <div class="widget-round secondary">
+                            <div class="bg-round">
+                              <svg class="svg-fill">
+                                <use href="../assets/svg/icon-sprite.svg#cart"> </use>
+                              </svg>
+                              <svg class="half-circle svg-fill">
+                                <use href="../assets/svg/icon-sprite.svg#halfcircle"></use>
+                              </svg>
+                            </div>
+                          </div>
+                          <div> 
+                            <h4>10,000</h4><span class="f-light">Books in Collection</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-xl-12"> 
+                      <div class="card widget-1">
+                        <div class="card-body"> 
+                          <div class="widget-content">
+                            <div class="widget-round primary">
+                              <div class="bg-round">
+                                <svg class="svg-fill">
+                                  <use href="../assets/svg/icon-sprite.svg#tag"> </use>
+                                </svg>
+                                <svg class="half-circle svg-fill">
+                                  <use href="../assets/svg/icon-sprite.svg#halfcircle"></use>
+                                </svg>
+                              </div>
+                            </div>
+                            <div> 
+                              <h4>4,200</h4><span class="f-light">Active Patron</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="knowledgebase-bg"><img class="bg-img-cover bg-center" src="{{ url_for('static', filename='images/bg_1.jpg') }}" alt="looginpage"></div>
+                <div class="knowledgebase-search">
+                  <div>
+                    <h3>Do you want to search for some books?</h3>
+                   <!-- Page 1: Search Form -->
+                    <form class="form-inline" action="{{ url_for('search_books_user') }}" method="get">
+                      <div class="form-group w-100">
+                        <i data-feather="search"></i>
+                        <input class="form-control-plaintext w-100" type="text" placeholder="Type the name of the book" name="query">
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-12">
+                <div class="header-faq">
+                  <h5 class="mb-0">Featured Books</h5>
+                </div>
+                <div class="row">
+                  {% for book in books %}
+                  <div class="col-xl-3 xl-50 col-md-6 box-col-6">
+                    <div class="card features-faq product-box">
+                      <div class="faq-image product-img">
+                        <!-- Display the book cover image -->
+                        <img class="img-fluid" src="{{ url_for('cover_image', entry_number=book.EntryNumber) }}" alt="{{ book.BookName }}" style="max-width: 300px; display: block; margin-left: auto; margin-right: auto;">
+                        <div class="product-hover">
+                          <ul>
+                            <li><i class="icon-link"></i></li>
+                            <li><i class="icon-import"></i></li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="card-body">
+                        <h6>{{ book.BookName }}</h6>
+                        <p>Author: {{ book.Author }}<br>Publisher: {{ book.Publisher }}</p>
+                      </div>
+                      <div class="card-footer">
+                        <span>ISBN: {{ book.ISBN }}</span>
+                        <span>Latest Version: {{ book.LatestVersion }}</span>
+                        <span>Shelf: {{ book.Shelf }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+              
+              
+            </div>
+          </div>
+          <!-- Container-fluid Ends-->
+        </div>
+      </div>
+    </div>
+    <!-- latest jquery-->
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <!-- Bootstrap js-->
+    <script src="{{ url_for('static', filename='bootstrap/bootstrap.bundle.min.js') }}"></script>
+
+    <!-- scrollbar js-->
+    <script src="{{ url_for('static', filename='js/scrollbar/simplebar.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/scrollbar/custom.js') }}"></script>
+    
+    <!-- Sidebar jquery-->
+    <script src="{{ url_for('static', filename='js/config.js') }}"></script>
+
+    <!-- Plugins JS start-->
+    <script src="{{ url_for('static', filename='js/sidebar-menu.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/slick/slick.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/slick/slick.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/header-slick.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='js/bootstrap-notify.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/default.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+
+    <!-- Plugins JS Ends-->
+
+    <!-- Theme js-->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <!-- Plugin used-->
+    <script>new WOW().init();</script>
+  </body>
+</html>

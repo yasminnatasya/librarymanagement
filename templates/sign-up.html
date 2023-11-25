@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    <!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900&amp;display=swap" rel="stylesheet">
+
+    <!-- Bootstrap css-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='bootstrap/bootstrap.css') }}">
+
+    <!-- App css-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}">
+
+    <!-- Responsive css-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/responsive.css') }}">
+
+  </head>
+
+  <style>
+     /* Overriding Bootstrap's tooltip positioning */
+    .custom-input .invalid-tooltip {
+      position: static;
+    }
+
+  </style>
+  <body>
+    <!-- login page start-->
+    <div class="container-fluid p-0"> 
+      <div class="row m-0">
+        <div class="col-xl-7 p-0"><img class="bg-img-cover bg-center" src="{{ url_for('static',filename='images/regGif.gif') }}" alt="looginpage"></div>
+        <div class="col-xl-5 p-0"> 
+          <div class="login-card login-dark">
+            <div>
+              <div class="login-main">
+
+                <!--Open Form-->
+                <form class="row g-3 needs-validation custom-input theme-form" novalidate="" method="POST" action="/sign-up">
+                  
+                  <h4>Create your account</h4>
+                  <p>Please fill in with your personal details below</p>
+
+                  <div class="form-group">
+                    <label for="validationFirstName" class="col-form-label pt-0">Your Name</label>
+                    <div class="row g-2">
+                      <div class="col-6">
+                        <input id="validationFirstName" class="form-control" type="text" name="first_name" required="" placeholder="First name">
+                        <div class="valid-tooltip">Looks good!</div>
+                      </div>
+                      <div class="col-6">
+                        <input id="validationSecondName" class="form-control" type="text" name="last_name" required="" placeholder="Last name">
+                        <div class="valid-tooltip">Looks good!</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="validationEmail" class="col-form-label">Email Address</label>
+                    <input id="validationEmail" class="form-control" type="email" name="email" required="" placeholder="Test@gmail.com">
+                    <div class="invalid-tooltip">Please provide a valid email.</div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="col-form-label" for="validationPassword">Password</label>
+                    <div class="form-input position-relative">
+                      <input id="validationPassword" class="form-control" type="password" name="password" required="" placeholder="*********">
+                      <div class="invalid-tooltip">Please provide a password.</div>
+                      <div class="show-hide">
+                        <span id="togglePassword" class="show"></span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="userType" class="col-form-label">User Type</label>
+                    <select id="userType" class="form-control" name="UserType" required="" onchange="toggleRegistrationCode()">
+                        <option value="">Select User Type</option>
+                        <option value="Librarian">Librarian</option>
+                        <option value="Patron">Patron</option>
+                    </select>
+                    <div class="invalid-tooltip">Please select a user type.</div>
+                </div>
+                
+                <div class="form-group" id="registrationCodeField" style="display: none;">
+                  <label for="registrationCode" class="col-form-label">Registration Code</label>
+                  <input id="registrationCode" class="form-control" type="text" name="registration_code" placeholder="Enter registration code">
+                  <div class="invalid-tooltip">Please enter a valid registration code.</div>
+              </div>
+              
+                <!-- Display login error message -->
+                {% if message %}
+                <div class="alert alert-danger" role="alert">
+                    {{ message }}
+                </div>
+                {% endif %}
+                
+                  <div class="form-group mb-0">
+                    <button class="btn btn-primary btn-block w-100" type="submit">Create Account</button>
+                  </div>
+
+                  <p class="mt-4 mb-0 text-center">Already have an account?<a class="ms-2" href="login.html">Sign in</a></p>
+                </form>
+                <!--Closed Form-->             
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <script>
+        function toggleRegistrationCode() {
+            var userType = document.getElementById("userType").value;
+            var registrationCodeField = document.getElementById("registrationCodeField");
+            if (userType === "Librarian") {
+                registrationCodeField.style.display = "block";
+            } else {
+                registrationCodeField.style.display = "none";
+            }
+        }
+        </script>
+
+        <script>
+          document.getElementById('togglePassword').addEventListener('click', function (e) {
+        // Toggle the type attribute
+        const passwordInput = document.getElementById('validationPassword');
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+
+        // Toggle the eye / eye-slash icon
+        this.classList.toggle('bi-eye'); // Add this line if you are using Bootstrap icons
+        });
+
+        </script>
+
+      {% if register_success %}
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script>
+          Swal.fire({
+              title: 'Success!',
+              text: 'Registration successful',
+              icon: 'success'
+          }).then(function() {
+              // Redirect to the login page after acknowledging the alert
+              window.location.href = "{{ url_for('login') }}";
+          });
+      </script>
+      {% endif %}
+
+        
+      <!-- latest jquery-->
+      <script src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
+            
+      <!-- Bootstrap js-->
+      <script src="{{ url_for('static',filename='bootstrap/bootstrap.bundle.min.js') }}"></script>
+
+      <script src="{{ url_for('static', filename='js/form-validation-custom.js') }}"></script>
+
+      <!-- Theme js-->
+      <script src="{{ url_for('static',filename='js/script.js') }}"></script>
+    
+    </div>
+    
+  </body>
+</html>
